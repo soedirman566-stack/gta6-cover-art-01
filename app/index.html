@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panel Pop — Multi-Panel Cover Art Maker</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <aside class="controls">
+    <header class="brand">
+      <h1>Panel <span>Pop</span></h1>
+      <p>Turn photos into a multi-panel cover poster: angled cuts, loud grades, heavy type.</p>
+    </header>
+
+    <section>
+      <h2>1 · Photos</h2>
+      <label class="file-btn">Add your photos <input id="photo" type="file" accept="image/*" multiple></label>
+      <div class="row">
+        <button id="sample-pier" type="button">Sample: Pier</button>
+        <button id="sample-boulevard" type="button">Sample: Boulevard</button>
+      </div>
+      <div id="strip" class="strip" aria-label="Your photos"></div>
+      <p class="tip">Click a photo to drop it into the selected panel.</p>
+    </section>
+
+    <section>
+      <h2>2 · Layout</h2>
+      <div id="layouts" class="layouts"></div>
+    </section>
+
+    <section>
+      <h2>3 · Panel</h2>
+      <p id="panel-label" class="tip">Panel 1 selected. Drag it on the cover to pan, scroll to zoom.</p>
+      <label>Zoom <input id="zoom" type="range" min="50" max="400" value="100"></label>
+      <div class="row">
+        <button id="fill-all" type="button">Fill all panels with this photo</button>
+        <button id="reset-view" type="button">Reset pan &amp; zoom</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>4 · Caption</h2>
+      <label>Words <input id="caption" type="text" maxlength="42" value="Leonida Heat"></label>
+      <label>Size <input id="cap-size" type="range" min="50" max="200" value="110"></label>
+      <div class="row segmented" role="group" aria-label="Caption position">
+        <button id="cap-top" type="button">Top</button>
+        <button id="cap-bottom" type="button" class="on">Bottom</button>
+      </div>
+      <label class="check"><input id="cap-arch" type="checkbox"> Arch the lettering</label>
+      <label class="check"><input id="badge" type="checkbox" checked> Sun &amp; palm badge</label>
+    </section>
+
+    <section>
+      <h2>5 · Grade</h2>
+      <div id="grades" class="grades"></div>
+      <label>Finish
+        <select id="finish">
+          <option value="clean">Clean</option>
+          <option value="grain" selected>Film grain</option>
+          <option value="halftone">Halftone print</option>
+        </select>
+      </label>
+    </section>
+
+    <section>
+      <h2>6 · Frame</h2>
+      <div class="row segmented" role="group" aria-label="Border colour">
+        <button data-border="#0a0a0c" class="on" type="button">Black</button>
+        <button data-border="#ffffff" type="button">White</button>
+        <button data-border="#ffc93c" type="button">Gold</button>
+      </div>
+      <label>Thickness <input id="border-width" type="range" min="0" max="30" value="11"></label>
+    </section>
+
+    <section>
+      <h2>7 · Export</h2>
+      <label>Size
+        <select id="size">
+          <option value="1080x1080">Square 1080 × 1080</option>
+          <option value="1080x1350">Portrait 1080 × 1350</option>
+          <option value="1920x1080" selected>Wide 1920 × 1080</option>
+        </select>
+      </label>
+      <button id="export" class="export" type="button">Export PNG</button>
+      <p id="status" role="status"></p>
+    </section>
+  </aside>
+
+  <section class="stage">
+    <canvas id="cover" width="1920" height="1080" aria-label="Your cover"></canvas>
+    <p class="hint">Click a panel to select it · drag to pan its photo · scroll over the cover to zoom the panel</p>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+@font-face {
+  font-family: 'CoverDisplay';
+  src: url('./fonts/DejaVuSans-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body {
+  background: #0c0916;
+  color: #f2ecff;
+  font: 14px/1.45 system-ui, sans-serif;
+}
+.app { display: flex; height: 100%; }
+
+.controls {
+  width: 308px;
+  flex: 0 0 308px;
+  overflow-y: auto;
+  padding: 18px 18px 28px;
+  background: linear-gradient(180deg, #18102b, #100a1f);
+  border-right: 1px solid #2c1f4d;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.brand h1 {
+  margin: 0;
+  font-family: 'CoverDisplay', sans-serif;
+  font-size: 30px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.brand h1 span {
+  background: linear-gradient(92deg, #ffb03a, #ff2e88);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.brand p { margin: 6px 0 0; color: #a99fd0; font-size: 12.5px; }
+.controls section { border-top: 1px solid #2c1f4d; padding-top: 12px; }
+.controls h2 {
+  margin: 0 0 10px;
+  font-size: 12px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: #ffb03a;
+}
+label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; margin-bottom: 10px; }
+label.check { flex-direction: row; align-items: center; gap: 8px; font-weight: 500; margin-bottom: 6px; }
+input[type=text], select {
+  font: inherit;
+  padding: 8px 10px;
+  border: 1px solid #3a2a63;
+  border-radius: 8px;
+  background: #0d0920;
+  color: #f2ecff;
+}
+input[type=range] { accent-color: #ff2e88; width: 100%; }
+input[type=file] { display: none; }
+button, .file-btn {
+  font: inherit;
+  font-weight: 700;
+  padding: 9px 10px;
+  border: 1px solid #3a2a63;
+  border-radius: 8px;
+  background: #221741;
+  color: #f2ecff;
+  cursor: pointer;
+  text-align: center;
+}
+button:hover, .file-btn:hover { background: #2d1e57; }
+button.on { border-color: #ffb03a; box-shadow: 0 0 0 1px #ffb03a inset; }
+.row { display: flex; gap: 8px; }
+.row > * { flex: 1; }
+.tip { margin: 6px 0; color: #a99fd0; font-size: 12.5px; }
+
+.strip { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+.strip button {
+  padding: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 62px;
+  height: 62px;
+  flex: 0 0 62px;
+  border: 2px solid #3a2a63;
+}
+.strip button.on { border-color: #ffd23f; }
+.strip img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.layouts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.layouts button { padding: 6px; display: flex; flex-direction: column; gap: 5px; align-items: stretch; }
+.layouts canvas { width: 100%; height: 64px; border-radius: 5px; display: block; }
+.layouts .lname { font-size: 12px; font-weight: 700; }
+.layouts .lnote { font-size: 10.5px; color: #a99fd0; font-weight: 500; }
+
+.grades { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+.grades button { height: 52px; border-radius: 8px; font-size: 12.5px; text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8); }
+
+.export {
+  width: 100%;
+  background: linear-gradient(92deg, #ff7a3c, #ff2e88);
+  border: 0;
+  color: #fff;
+  font-size: 15px;
+  padding: 12px;
+}
+#status { color: #8affc1; min-height: 1.2em; margin: 8px 0 0; font-size: 12.5px; }
+
+.stage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 22px;
+  background: radial-gradient(1200px 700px at 50% 38%, #1a1030, #08060f);
+  min-width: 0;
+}
+.stage canvas {
+  max-width: 100%;
+  max-height: calc(100vh - 90px);
+  width: auto;
+  height: auto;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.65), 0 0 0 1px #2c1f4d;
+  cursor: grab;
+  touch-action: none;
+}
+.stage canvas:active { cursor: grabbing; }
+.hint { margin: 0; color: #7d72a6; font-size: 12.5px; }
+
+body.shot-cover .controls, body.shot-cover .hint { display: none; }
+body.shot-cover .stage { padding: 0; background: #000; }
+body.shot-cover .stage canvas { max-width: none; max-height: none; box-shadow: none; }
